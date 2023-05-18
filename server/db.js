@@ -1,9 +1,9 @@
 // connect our server with our database
 //indirdiğimiz db kütüphanesi server ve database bağlantısını gerçekleştiriyor. ve bu bağlantıyı db.js dosyasında gerçekleştiriyoruz.
 
-const Pool = require("pg").Pool
+const Pool = require("pg").Pool;
 
-const pool = Pool ({
+const pool = new Pool ({
     user: "postgres",
     password: "omercan01",
     host: "localhost",
