@@ -1,24 +1,20 @@
 import React, { useState, Fragment } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import Dashboard from "./components/Dashboard";
+//components
+import Login from "./components/Login";
+import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
-    <Fragment>
-      <Router>
-        <div className="container">
-          <Switch></Switch>
-        </div>
-      </Router>
-    </Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
