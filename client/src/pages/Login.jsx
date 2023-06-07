@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure({
+  autoClose: 2000,
+  draggable: false,
+});
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -31,9 +38,14 @@ const Login = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      localStorage.setItem("token", parseRes.token);
-
-      setAuth(true);
+      if (parseRes.token) {
+        localStorage.setItem("token", parseRes.token);
+        setAuth(true);
+        toast.success("Login successful");
+      } else {
+        setAuth(false);
+        toast.error(parseRes);
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -62,6 +74,7 @@ const Login = ({ setAuth }) => {
 
         <button className="btn btn-success btn-block">Log In</button>
       </form>
+
       <Link to="/register">Register</Link>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 //components
 import Login from "./pages/Login";
