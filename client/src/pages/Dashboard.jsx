@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import { toast } from "react-toastify";
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
@@ -23,6 +24,7 @@ const Dashboard = ({ setAuth }) => {
     e.preventDefault();
     localStorage.removeItem("token");
     setAuth(false);
+    toast.success("User logged out");
   };
 
   useEffect(() => {
